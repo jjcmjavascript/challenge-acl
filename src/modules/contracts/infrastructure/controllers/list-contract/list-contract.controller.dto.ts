@@ -19,7 +19,6 @@ export class ListContractControllerDto {
 
   @IsOptional()
   @Transform(({ value }) => {
-    console.log('value', value);
     return new Date(value);
   })
   @IsDate()

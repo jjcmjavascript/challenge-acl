@@ -35,6 +35,12 @@ npm run start:dev
 # Otros Comandos - Other Commands
 
 ### Revertir migracion - To rollback the database
-```
+```bash
 npx prisma migrate reset
+```
+
+### Ejecutar los test e2e - Execute e2e tests
+
+```bash
+npm run test:e2e
 ```
