@@ -9,7 +9,7 @@ export class Contract {
   private amount: bigint;
   private currency: string;
 
-  constructor(private value: ContractInterface) {
+  constructor(value: ContractInterface) {
     this.id = value.id;
     this.clientName = value.clientName;
     this.email = value.email;
@@ -23,12 +23,5 @@ export class Contract {
     return new Contract({
       ...value,
     });
-  }
-
-  toObject(): Record<string, any> {
-    return {
-      ...this.value,
-      amount: this.amount.toString(),
-    };
   }
 }

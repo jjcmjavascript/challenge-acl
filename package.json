@@ -6,8 +6,7 @@
   "private": false,
   "license": "GPL-3.0-only",
   "scripts": {
-    "db:create": "ts-node ./src/infraestructure/scripts/create-db.ts",
-    "db:migrate": "ts-node ./src/infraestructure/scripts/create-initial-tables.ts",
+    "db:create": "ts-node ./src/scripts/create-db.ts",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",

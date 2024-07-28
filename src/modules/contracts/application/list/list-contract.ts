@@ -1,7 +1,7 @@
 import { Contract } from '@contracts/domain/contract.entity';
 import { ContractRepository } from '@contracts/domain/contract.repository';
 import { ListContractDto } from './list-contract-dto';
-import { CustomInjectable } from '@/shared/custom-injectable';
+import { CustomInjectable } from '@shared/decorators/custom-injectable';
 
 @CustomInjectable()
 export class ListContract {

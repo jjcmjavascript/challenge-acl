@@ -4,34 +4,6 @@ import { Contract } from '@contracts/domain/contract.entity';
 import { ContractListInterface } from '@contracts/domain/contract.interface';
 import { CustomInjectable } from '@shared/decorators/custom-injectable';
 
-const getWhere = (query: ContractListInterface) => {
-  const where: Record<string, any> = {
-    AND: [],
-  };
-
-  if (query.accountNumber) {
-    where.accountNumber = query.accountNumber;
-  }
-
-  if (query.startDate) {
-    where.AND.push({
-      initialDate: {
-        gte: query.startDate,
-      },
-    });
-  }
-
-  if (query.endDate) {
-    where.AND.push({
-      initialDate: {
-        lte: query.endDate,
-      },
-    });
-  }
-
-  return where;
-};
-
 @CustomInjectable()
 export class ContractDdRepository implements ContractRepository {
   constructor(private readonly repository: PrismaService) {}
@@ -54,3 +26,34 @@ export class ContractDdRepository implements ContractRepository {
     return new Contract(newContract);
   }
 }
+
+const getWhere = (query: ContractListInterface) => {
+  const where: Record<string, any> = {
+    AND: [],
+  };
+
+  if (query.accountNumber) {
+    where.accountNumber = query.accountNumber;
+  }
+
+  if (query.startDate) {
+    where.AND.push({
+      initialDate: {
+        gte: query.startDate
+          .toISOString()
+          .split('T')[0]
+          .concat('T00:00:00.000Z'),
+      },
+    });
+  }
+
+  if (query.endDate) {
+    where.AND.push({
+      initialDate: {
+        lte: query.endDate.toISOString().split('T')[0].concat('T23:59:59.999Z'),
+      },
+    });
+  }
+
+  return where;
+};

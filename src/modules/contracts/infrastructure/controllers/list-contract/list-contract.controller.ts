@@ -1,4 +1,4 @@
-import { Param, Get, Controller, UseFilters } from '@nestjs/common';
+import { Get, Controller, UseFilters, Query } from '@nestjs/common';
 import { ListContractControllerDto } from './list-contract.controller.dto';
 import { ListContract } from '@contracts/application/list/list-contract';
 import { ExceptionFilter } from '@shared/filters/exception-filter';
@@ -9,7 +9,7 @@ export class ListContractController {
 
   @Get()
   @UseFilters(new ExceptionFilter())
-  async execute(@Param() contract: ListContractControllerDto) {
+  async execute(@Query() contract: ListContractControllerDto) {
     return this.service.execute(contract);
   }
 }
