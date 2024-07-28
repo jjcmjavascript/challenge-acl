@@ -1,6 +1,7 @@
 # Guia de Instalacion - Installation Guide
 ## Requisitos
 Node version 20.16.0+
+
 postgresql version 13.0.0+
 
 ### Clonar el repositorio - Clone the repository
